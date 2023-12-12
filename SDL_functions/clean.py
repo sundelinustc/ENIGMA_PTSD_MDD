@@ -30,7 +30,7 @@ def SDL_clean(SDL):
 
     ### list all file names with specified pattern
     root = SDL['file']['data'] # parent path of all data files
-    pattern = '*' + SDL['data']['atlas_conn']
+    pattern = '*' + SDL['data']['fALFF_falff']
 
     fns = [] # list of full file path & name
     for path, subdirs, files in os.walk(root):
