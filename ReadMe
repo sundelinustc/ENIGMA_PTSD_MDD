@@ -1,1 +1,18 @@
 Python, R, and Matlab scripts for Meta- and Mega-Analyses on ENIGMA PTSD MDD neuroimaging data.
+
+A pilot stage of the pilot version. Please be patient to the ugly code and bugs.
+
+I programmed and debugged the code using VS Code in a remote cluster node through interactive mode under Linux.
+
+The main script is "SDL_Main.py", please make sure that, in the same folder, there are "path_para.yaml" and the folder called "SDL_functions".
+
+You can set the information of paths, data type, and statistical models in "path_para.yaml", which can be edited by any text editor.
+
+You can choose the needed functions in "SDL_Main.py" and then run the script:
+  --- D = SDL_initialization('path_para.yaml') is to extract information of paths & parameters, and to make necessary folders if they do not exist. Please keep it working every time you run this script.
+  --- SDL_clean(D) is to clean your data for further analysis. It makes a "Subjects.csv" file in the "Processes" directory.
+  --- SDL_pre_meta(D) runs models per site using FSL (I suppose that you have installed it).
+  --- SDL_meta_nimare(D) does Image-Based Meta-Analysis (IBMA) using Nimare package.
+  --- Mega-analysis is still under development.
+
+Finally you can check the results in the "Results" folder. Please get into the folder of the corresponding data type, statistical model, and effect of interest. You can view the results (FDR corrected) in "report.html" or open "Meta_Stouffers_STAT_tsts1.nii.gz" to see details.
