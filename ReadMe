@@ -10,7 +10,7 @@ You can set the information of paths, data type, and statistical models in "path
 
 You can choose the needed functions in "SDL_Main.py" and then run the script:
   --- D = SDL_initialization('path_para.yaml') is to extract information of paths & parameters, and to make necessary folders if they do not exist. Please keep it working every time you run this script.
-  --- SDL_clean(D) is to clean your data for further analysis. It makes a "Subjects.csv" file in the "Processes" directory.
+  --- SDL_clean(D) is to clean your data for further analysis. It makes a "Subjects.csv" file in the "Processes" directory. JUST RUN IT ONCE (because time consuming!) if you do not add/remove subjects or variables.
   --- SDL_pre_meta(D) runs models per site using FSL (I suppose that you have installed it).
   --- SDL_meta_nimare(D) does Image-Based Meta-Analysis (IBMA) using Nimare package.
   --- Mega-analysis is still under development.
