@@ -1,0 +1,40 @@
+# data may be stored far from the scripts, 
+# and may be in different folders
+# the file of demographic & clinical info for ALL subjects MUST be in the 1st data path
+data_path:
+   - '/tmp/isilon/morey/lab/dusom_morey/new_halfpipe/Outputs'
+   - '/tmp/isilon/morey/lab/dusom_morey/PGC/CENC'
+
+# data type & main strings in the filename
+# -- for demographic & clinical info, .xlsx filename & sheetname
+# -- for images, .nii.gz, .json, & mask.nii.gz
+data:
+    'demographic_clinical': ['ENIGMA-PGC_master_v1.1_TR&fID_v1.xlsx','forPGC']
+    'fALFF_alff':   ['_feature-fALFF_alff.nii.gz',  '_feature-fALFF_alff.json',  '_feature-fALFF_mask.nii.gz']
+    'fALFF_falff':  ['_feature-fALFF_falff.nii.gz', '_feature-fALFF_falff.json', '_feature-fALFF_mask.nii.gz']
+    'fALFF1_alff':  ['_feature-fALFF1_alff.nii.gz', '_feature-fALFF1_alff.json', '_feature-fALFF1_mask.nii.gz']
+    'fALFF1_falff': ['_feature-fALFF1_falff.nii.gz','_feature-fALFF1_falff.json','_feature-fALFF1_mask.nii.gz']
+    'reHo':         ['_feature-reHo_reho.nii.gz',   '_feature-reHo_reho.json',   '_feature-reHo_mask.nii.gz']
+    'reHo1':        ['_feature-reHo1_reho.nii.gz',  '_feature-reHo1_reho.json',  '_feature-reHo1_mask.nii.gz']
+
+# model info
+# predictors (independent variables)
+# -- key: var name for this package: 
+# -- value list: 1. var name in datafile, 
+#     2. categorical or continuous, 
+#     3. dict {levels' old label:new label}],
+#     4. list of levels to be kept,
+#     while no actions will be taken if the dict is empty
+# model_pre_meta
+# -- key: title of analysis
+# -- value list: 1. model formula
+#     2. list of effects of interest
+model:
+    predictors: 
+        'fID':   ['fID','cat',{},[]]
+        'SITE':  ['site3','cat',{},[]]
+        'GROUP': ['currentPTSD_dx','cat',{'0':0,'1':1},[0,1]]
+        'SEX':   ['Sex','cat',{'M':0,'F':1},[0,1]]
+        'AGE':   ['Age','con',{},[]]
+    models_pre_meta:
+        'Main_GROUP_AGE_SEX': ['GROUP + AGE + SEX', ['GROUP','AGE','SEX']]
