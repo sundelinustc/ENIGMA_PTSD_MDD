@@ -148,11 +148,11 @@ def SDL_clean(D):
     t0 = time.time()
     print(f"\n-----------\nSearching for all files of interest (time consuming, ~10min !!)...")
     # df = SDL_process_patterns_in_parallel(my_args)
-    if __name__ == '__main__':
-        # use all of the CPUs to run parallel processing
-        with Pool() as pool:
-            dfs = pool.map(SDL_list_files, my_args)  
-        df = pd.concat(dfs)
+    # if __name__ == '__main__':
+    # use all of the CPUs to run parallel processing
+    with Pool() as pool:
+        dfs = pool.map(SDL_list_files, my_args)  
+    df = pd.concat(dfs)
     print(f"Time Elapsed: {time.time()-t0}\n-----------\n")
     
     # (iii) convert to a wide dataframe
